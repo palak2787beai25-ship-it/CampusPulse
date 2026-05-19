@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Academics | CampusPulse</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(120deg,#f0f4ff,#e6f0ff);
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+padding:25px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* NAVIGATION */
+
+nav{
+display:flex;
+justify-content:center;
+gap:30px;
+background:white;
+padding:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+nav a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#6a11cb;
+transform:scale(1.1);
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* PAGE TITLE */
+
+.page-title{
+text-align:center;
+margin-bottom:40px;
+color:#6a11cb;
+font-size:28px;
+}
+
+/* EVENT CARDS */
+
+.event-card{
+background:white;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+padding:20px;
+margin-bottom:30px;
+transition:0.3s;
+}
+
+.event-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+.event-card img{
+width:100%;
+height:220px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:15px;
+transition:0.4s;
+}
+
+.event-card:hover img{
+transform:scale(1.03);
+}
+
+.event-card h3{
+color:#2575fc;
+margin-bottom:10px;
+}
+
+.event-card p{
+margin:6px 0;
+}
+
+/* REGISTER BUTTON */
+
+button[onclick="openForm()"]{
+display:block;
+margin:30px auto;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+transition:0.3s;
+font-weight:600;
+}
+
+button[onclick="openForm()"]:hover{
+transform:scale(1.05);
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
+
+/* FORM */
+
+#formBox{
+margin-top:20px;
+text-align:center;
+}
+
+#formBox input{
+width:90%;
+padding:10px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:8px;
+outline:none;
+}
+
+#formBox button{
+width:90%;
+padding:10px;
+margin-top:8px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+#formBox button:last-child{
+background:#ccc;
+color:black;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:40px;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Academic Events</h1>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="academics.html">Academics</a>
+<a href="cultural.html">Cultural</a>
+<a href="technical.html">Technical</a>
+<a href="sports.html">Sports</a>
+<a href="contact.html">Contact</a>
+<a href="registrations.html">Registrations</a>
+<a href="logout.html">Logout</a> <!-- ✅ ADDED -->
+</nav>
+
+<div class="container">
+
+<h2 class="page-title">Upcoming Academic Events</h2>
+
+<div class="event-card">
+<img src="academics1.png">
+<h3>Research Seminar on AI</h3>
+<p><strong>Date:</strong> March 12, 2026</p>
+<p>Explore the latest advances in AI and ML.</p>
+</div>
+
+<div class="event-card">
+<img src="academics2.png">
+<h3>Guest Lecture: Innovation in Engineering</h3>
+<p><strong>Date:</strong> March 20, 2026</p>
+<p>Industry leaders share insights.</p>
+</div>
+
+<div class="event-card">
+<img src="academics3.png">
+<h3>Workshop: Data Science Fundamentals</h3>
+<p><strong>Date:</strong> April 2, 2026</p>
+<p>Hands-on learning in data science.</p>
+</div>
+
+</div>
+
+<button onclick="openForm()">Register</button>
+
+<div id="formBox" style="display:none; background:white; padding:20px; border-radius:10px; width:300px; margin:auto; box-shadow:0 10px 20px rgba(0,0,0,0.2);">
+
+<h3>Event Registration</h3>
+
+<input type="text" id="rname" placeholder="Your Name"><br><br>
+<input type="email" id="remail" placeholder="Email"><br><br>
+<input type="text" id="revent" placeholder="Event Name"><br><br>
+
+<button onclick="register()">Submit</button>
+<button onclick="closeForm()">Cancel</button>
+
+</div>
+
+<script>
+
+function openForm(){
+    document.getElementById("formBox").style.display = "block";
+}
+
+function closeForm(){
+    document.getElementById("formBox").style.display = "none";
+}
+
+function register(){
+    let name = document.getElementById("rname").value;
+    let email = document.getElementById("remail").value;
+    let event = document.getElementById("revent").value;
+
+    if(name === "" || email === "" || event === ""){
+        alert("Fill all fields!");
+        return;
+    }
+
+    let data = JSON.parse(localStorage.getItem("registrations")) || [];
+    data.push({name,email,event});
+    localStorage.setItem("registrations", JSON.stringify(data));
+
+    alert("Registered Successfully!");
+    closeForm();
+}
+
+function searchEvents(){
+    let input = document.getElementById("search").value.toLowerCase();
+    let cards = document.querySelectorAll(".event-card");
+
+    cards.forEach(card=>{
+        let text = card.innerText.toLowerCase();
+        card.style.display = text.includes(input) ? "block" : "none";
+    });
+}
+// 🔥 READ SEARCH FROM URL
+window.onload = function(){
+let params = new URLSearchParams(window.location.search);
+let search = params.get("search");
+
+if(search){
+search = search.toLowerCase();
+
+let cards = document.querySelectorAll(".event-card");
+
+cards.forEach(card=>{
+let text = card.innerText.toLowerCase();
+
+if(text.includes(search)){
+card.style.display = "block";
+}
+else{
+card.style.display = "none";
+}
+});
+}
+};
+
+</script>
+
+<footer>
+<p>© 2026 CampusPulse Portal</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact | CampusPulse</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(120deg,#f0f4ff,#e6f0ff);
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+padding:25px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* NAV */
+
+nav{
+display:flex;
+justify-content:center;
+gap:30px;
+background:white;
+padding:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+z-index:100;
+}
+
+nav a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#6a11cb;
+transform:scale(1.1);
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* PAGE TITLE */
+
+.page-title{
+text-align:center;
+margin-bottom:40px;
+color:#6a11cb;
+font-size:28px;
+}
+
+/* CONTACT CARD */
+
+.contact-card{
+background:white;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+padding:20px;
+margin-bottom:30px;
+transition:0.3s;
+}
+
+.contact-card:hover{
+transform:translateY(-8px);
+box-shadow:0 15px 30px rgba(0,0,0,0.15);
+}
+
+.contact-card h3{
+color:#2575fc;
+margin-bottom:10px;
+}
+
+.contact-card p{
+margin:6px 0;
+}
+
+/* FORM */
+
+label{
+display:block;
+margin-top:10px;
+font-weight:500;
+}
+
+input, textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+textarea{
+resize:none;
+}
+
+.submit-btn{
+background:#2575fc;
+color:white;
+border:none;
+padding:12px;
+margin-top:15px;
+width:100%;
+border-radius:6px;
+cursor:pointer;
+}
+
+.submit-btn:hover{
+background:#6a11cb;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:40px;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>CampusPulse</h1>
+<p>Campus Connect Portal</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="academics.html">Academics</a>
+<a href="cultural.html">Cultural</a>
+<a href="technical.html">Technical</a>
+<a href="sports.html">Sports</a>
+<a href="contact.html">Contact</a>
+<a href="registrations.html">Registrations</a>
+<a href="logout.html">Logout</a> <!-- ✅ ONLY ADDITION -->
+</nav>
+
+<div class="container">
+
+<h2 class="page-title">Contact Us</h2>
+
+<div class="contact-card">
+
+<h3>Get In Touch</h3>
+
+<p><b>Address:</b> CampusPulse Office, ABC University</p>
+<p><b>Email:</b> campuspulse@college.edu</p>
+<p><b>Phone:</b> +91 98765 43210</p>
+<p><b>Office Hours:</b> Mon - Fri (9:00 AM – 5:00 PM)</p>
+
+<p>
+For inquiries regarding campus events, announcements, or collaborations,
+feel free to contact our support team.
+</p>
+
+</div>
+
+<div class="contact-card">
+
+<h3>Send a Message</h3>
+
+<form onsubmit="return validate()">
+
+<label>Full Name</label>
+<input type="text" placeholder="Enter your name" >
+
+<label>Email Address</label>
+<input type="email" placeholder="Enter your email" >
+
+<label>Event Name</label>
+<input type="text" placeholder="Enter Event Name">
+
+<label>Message</label>
+<textarea rows="5" placeholder="Write your message here..." ></textarea>
+
+<button class="submit-btn">Send Message</button>
+
+</form>
+
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 CampusPulse Portal</p>
+</footer>
+
+<script>
+function validate(){
+
+  var name = document.forms[0].elements[0].value;
+  var email = document.forms[0].elements[1].value;
+  var event= document.forms[0].elements[2].value;
+  var message = document.forms[0].elements[3].value;
+
+  if(name == ""){
+    alert("Name is required");
+    return false;
+  }
+  else if(email == ""){
+    alert("Email is required");
+    return false;
+  }
+  else if(event == ""){
+    alert("Subject is required");
+    return false;
+  }
+  else if(message == ""){
+    alert("Message is required");
+    return false;
+  }
+  else{
+    alert("Form submitted successfully");
+    return true;
+  }
+
+}
+</script>
+
+</body>
+</html>

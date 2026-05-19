@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>CampusPulse | Home</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+font-family:'Poppins',sans-serif;
+}
+
+body{
+background:linear-gradient(120deg,#f0f4ff,#e6f7ff);
+color:#333;
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+padding:25px;
+text-align:center;
+box-shadow:0 4px 12px rgba(0,0,0,0.2);
+}
+
+/* NAVIGATION */
+
+nav{
+display:flex;
+justify-content:center;
+gap:25px;
+background:white;
+padding:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+position:sticky;
+top:0;
+z-index:100;
+flex-wrap:wrap;
+}
+
+nav a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+transition:0.3s;
+}
+
+nav a:hover{
+color:#6a11cb;
+transform:scale(1.1);
+}
+
+/* 🔥 SEARCH BAR */
+
+.search-box{
+text-align:center;
+margin:25px 0;
+}
+
+.search-box input{
+padding:12px;
+width:35%;
+border-radius:25px;
+border:1px solid #ccc;
+outline:none;
+}
+
+.search-box select{
+padding:12px;
+border-radius:25px;
+border:1px solid #ccc;
+margin-left:10px;
+}
+
+.search-box button{
+padding:12px 20px;
+border:none;
+border-radius:25px;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+cursor:pointer;
+margin-left:10px;
+}
+
+/* HERO */
+
+.hero{
+background:linear-gradient(135deg,#6a11cb,#2575fc);
+color:white;
+padding:100px 20px;
+text-align:center;
+border-bottom-left-radius:40px;
+border-bottom-right-radius:40px;
+}
+
+.hero h1{
+font-size:48px;
+margin-bottom:15px;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* FEATURES */
+
+.features h2{
+text-align:center;
+margin-bottom:30px;
+color:#6a11cb;
+}
+
+.feature-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.feature-card{
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+text-align:center;
+transition:0.3s;
+}
+
+.feature-card img{
+width:100%;
+height:150px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:12px;
+}
+
+.feature-card:hover{
+transform:translateY(-8px);
+}
+
+/* CATEGORIES */
+
+.categories{
+margin-top:60px;
+}
+
+.category-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:20px;
+}
+
+.category{
+background:linear-gradient(135deg,#2575fc,#6a11cb);
+color:white;
+padding:20px;
+text-align:center;
+border-radius:15px;
+transition:0.3s;
+}
+
+.category img{
+width:100%;
+height:120px;
+object-fit:cover;
+border-radius:10px;
+margin-bottom:10px;
+}
+
+.category a{
+color:white;
+text-decoration:none;
+font-weight:600;
+}
+
+/* ANNOUNCEMENT */
+
+.announcement{
+margin-top:50px;
+background:white;
+padding:25px;
+border-left:6px solid #6a11cb;
+border-radius:10px;
+}
+
+/* POPUP ICONS */
+
+.floating-btn{
+position:fixed;
+right:20px;
+width:55px;
+height:55px;
+border-radius:50%;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-size:22px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+
+
+#leaveBtn{
+bottom:20px;
+background:#2575fc;
+}
+
+/* POPUP BOX */
+
+.popup{
+display:none;
+position:fixed;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+z-index:999;
+width:300px;
+}
+
+.popup input, .popup textarea{
+width:100%;
+margin:8px 0;
+padding:8px;
+}
+
+.popup button{
+margin-top:10px;
+padding:10px;
+width:100%;
+background:#6a11cb;
+color:white;
+border:none;
+border-radius:5px;
+}
+#leavePopup select{
+width:100%;
+padding:10px;
+margin:8px 0;
+border-radius:8px;
+border:1px solid #ccc;
+}
+/* FOOTER */
+
+footer{
+margin-top:50px;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+text-align:center;
+padding:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>CampusPulse</h1>
+<p>Smart Campus Communication Portal</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="academics.html">Academics</a>
+<a href="cultural.html">Cultural</a>
+<a href="technical.html">Technical</a>
+<a href="sports.html">Sports</a>
+<a href="contact.html">Contact</a>
+<a href="registrations.html">Registrations</a>
+
+
+
+<div id="profileBox" style="
+margin-left:auto;
+display:flex;
+align-items:center;
+gap:10px;
+position:relative;
+">
+
+<span id="usernameDisplay" style="font-weight:600;"></span>
+
+<div onclick="toggleMenu()" style="
+width:35px;
+height:35px;
+border-radius:50%;
+background:#6a11cb;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-weight:bold;
+">
+☕︎
+</div>
+
+<!-- DROPDOWN -->
+<div id="profileMenu" style="
+display:none;
+position:absolute;
+right:0;
+top:45px;
+background:white;
+padding:10px;
+border-radius:10px;
+box-shadow:0 10px 20px rgba(0,0,0,0.2);
+min-width:150px;
+text-align:center;
+">
+
+<p id="userText"></p>
+
+<button onclick="logout()" style="
+background:#6a11cb;
+color:white;
+border:none;
+padding:8px 15px;
+border-radius:5px;
+cursor:pointer;
+">
+Logout
+</button>
+
+</div>
+
+</div>
+</nav>
+
+<!-- 🔥 SEARCH BAR -->
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search events...">
+
+<select id="filter">
+<option value="all">Select Category</option>
+<option value="academic">Academics</option>
+<option value="technical">Technical</option>
+<option value="cultural">Cultural</option>
+<option value="sports">Sports</option>
+</select>
+
+<button onclick="searchFilter()">Search</button>
+</div>
+
+<section class="hero">
+<h1>Welcome to CampusPulse</h1>
+<p>Your central hub for campus events.</p>
+</section>
+
+<div class="container">
+
+<section class="features">
+<h2>Portal Features</h2>
+
+<div class="feature-grid">
+
+<div class="feature-card" data-type="academic">
+<img src="index1.png">
+<h3>Campus Announcements</h3>
+<p>Stay updated with notices.</p>
+</div>
+
+<div class="feature-card" data-type="technical">
+<img src="index2.png">
+<h3>Event Listings</h3>
+<p>Discover events.</p>
+</div>
+
+<div class="feature-card" data-type="cultural">
+<img src="index3.png">
+<h3>Responsive Design</h3>
+<p>Works on all devices.</p>
+</div>
+
+</div>
+</section>
+
+<section class="categories">
+
+<div class="category-grid">
+
+<div class="category" data-type="academic">
+<img src="index4.png">
+<a href="academics.html">Academic Events</a>
+</div>
+
+<div class="category" data-type="technical">
+<img src="index5.png">
+<a href="technical.html">Technical Events</a>
+</div>
+
+<div class="category" data-type="cultural">
+<img src="index6.png">
+<a href="cultural.html">Cultural Activities</a>
+</div>
+
+<div class="category" data-type="sports">
+<img src="index7.png">
+<a href="sports.html">Sports Competitions</a>
+</div>
+
+</div>
+</section>
+
+<section class="announcement">
+<h3>Latest Announcement</h3>
+<p>Campus Tech Fest 2026 registrations are now open.</p>
+</section>
+
+</div>
+
+<!-- 🔥 FLOATING BUTTONS -->
+
+<div id="leaveBtn" class="floating-btn" onclick="openPopup('leavePopup')">📝</div>
+
+
+
+<!-- DUTY LEAVE POPUP -->
+<div id="leavePopup" class="popup">
+<h3>Duty Leave</h3>
+
+<input type="text" id="dlName" placeholder="Name">
+<select id="dlEvent">
+<option value="">Select Event</option>
+
+<!-- Academics -->
+<option value="Workshop: Data Science Fundamentals">Workshop: Data Science Fundamentals</option>
+
+<!-- Technical -->
+<option value="Hackathon 2026">Hackathon 2026</option>
+<option value="Coding Contest">Coding Contest</option>
+<option value="Tech Talk Series">Tech Talk Series</option>
+
+<!-- Cultural -->
+<option value="Dance Competition">Dance Competition</option>
+<option value="Music Festival">Music Festival</option>
+<option value="Art & Photography Exhibition">Art & Photography Exhibition</option>
+
+<!-- Sports -->
+<option value="Football Tournament">Football Tournament</option>
+<option value="Cricket Championship">Cricket Championship</option>
+<option value="Basketball League">Basketball League</option>
+
+</select>
+<input type="date" id="dlDate">
+<textarea id="dlReason" placeholder="Slot(Full day/Period Wise)"></textarea>
+
+<button onclick="applyDL()">Apply</button>
+</div>
+
+<footer>
+<p>© 2026 CampusPulse Portal</p>
+</footer>
+
+<script>
+
+/* 🔥 SEARCH FUNCTION */
+
+function searchFilter(){
+let input = document.getElementById("searchInput").value.toLowerCase();
+let filter = document.getElementById("filter").value;
+
+/* 🔥 REDIRECT WITH SEARCH DATA */
+
+if(filter === "academic"){
+    window.location = "academics.html?search=" + input;
+}
+else if(filter === "technical"){
+    window.location = "technical.html?search=" + input;
+}
+else if(filter === "cultural"){
+    window.location = "cultural.html?search=" + input;
+}
+else if(filter === "sports"){
+    window.location = "sports.html?search=" + input;
+}
+else{
+    alert("Please select a category to search");
+}
+}
+
+/* POPUPS */
+
+function openPopup(id){
+document.getElementById(id).style.display="block";
+}
+
+function closePopup(id){
+document.getElementById(id).style.display="none";
+}
+function applyDL(){
+
+let name = document.getElementById("dlName").value;
+let event = document.getElementById("dlEvent").value;
+let date = document.getElementById("dlDate").value;
+let reason = document.getElementById("dlReason").value;
+
+if(name=="" || event=="" || date=="" || reason==""){
+    alert("Fill all fields!");
+    return;
+}
+
+/* 🔥 STORE DATA */
+let data = JSON.parse(localStorage.getItem("dutyLeave")) || [];
+
+data.push({
+    name:name,
+    event:event,
+    date:date,
+    reason:reason
+});
+
+localStorage.setItem("dutyLeave", JSON.stringify(data));
+
+alert("Duty Leave Applied Successfully!");
+
+/* CLEAR FORM */
+document.getElementById("dlName").value="";
+document.getElementById("dlEvent").value="";
+document.getElementById("dlDate").value="";
+document.getElementById("dlReason").value="";
+
+/* CLOSE POPUP */
+closePopup("leavePopup");
+}
+window.onload = function(){
+
+let user = localStorage.getItem("loggedUser");
+
+/* AGAR LOGIN NA HO */
+if(!user){
+    window.location = "login.html";
+}
+
+/* SHOW USER */
+document.getElementById("usernameDisplay").innerText = user;
+document.getElementById("userText").innerText = "Hello, " + user;
+}
+
+// TOGGLE DROPDOWN
+function toggleMenu(){
+let menu = document.getElementById("profileMenu");
+
+if(menu.style.display === "block"){
+    menu.style.display = "none";
+}else{
+    menu.style.display = "block";
+}
+}
+
+// LOGOUT
+function logout(){
+localStorage.removeItem("loggedUser");
+window.location = "login.html";
+}
+</script>
+
+</body>
+</html>

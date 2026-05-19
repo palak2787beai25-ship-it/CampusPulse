@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Registrations | CampusPulse</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+font-family:'Poppins',sans-serif;
+box-sizing:border-box;
+}
+
+body{
+background:linear-gradient(120deg,#f0f4ff,#e6f0ff);
+}
+
+/* HEADER */
+
+header{
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+padding:25px;
+text-align:center;
+}
+
+/* NAV */
+
+nav{
+display:flex;
+justify-content:center;
+gap:30px;
+background:white;
+padding:15px;
+box-shadow:0 4px 12px rgba(0,0,0,0.08);
+}
+
+nav a{
+text-decoration:none;
+color:#444;
+font-weight:500;
+}
+
+nav a:hover{
+color:#6a11cb;
+}
+
+/* CONTAINER */
+
+.container{
+max-width:1000px;
+margin:auto;
+padding:40px 20px;
+}
+
+/* TITLE */
+
+h2{
+text-align:center;
+margin-bottom:30px;
+color:#6a11cb;
+}
+
+/* TABLE */
+
+table{
+width:100%;
+border-collapse:collapse;
+background:white;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+border-radius:10px;
+overflow:hidden;
+margin-bottom:40px;
+}
+
+th, td{
+padding:12px;
+text-align:center;
+border-bottom:1px solid #eee;
+}
+
+th{
+background:#6a11cb;
+color:white;
+}
+
+/* BUTTONS */
+
+.delete-btn{
+background:red;
+color:white;
+border:none;
+padding:6px 12px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.clear-btn{
+margin-top:10px;
+display:block;
+margin-left:auto;
+margin-right:auto;
+background:#6a11cb;
+color:white;
+border:none;
+padding:10px 20px;
+border-radius:20px;
+cursor:pointer;
+}
+
+/* FOOTER */
+
+footer{
+margin-top:40px;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+text-align:center;
+padding:20px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Registrations Dashboard</h1>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="registrations.html">Registrations</a>
+<a href="logout.html">Logout</a>
+</nav>
+
+<div class="container">
+
+<h2>All Event Registrations</h2>
+
+<table id="regTable">
+<tr>
+<th>Name</th>
+<th>Email</th>
+<th>Event</th>
+<th>Action</th>
+</tr>
+</table>
+
+<button class="clear-btn" onclick="clearAll()">Clear All Registrations</button>
+
+<!-- 🔥 NEW DUTY LEAVE SECTION -->
+
+<h2>Duty Leave Applications</h2>
+
+<table id="dlTable">
+<tr>
+<th>Name</th>
+<th>Event</th>
+<th>Date</th>
+<th>Reason</th>
+<th>Action</th>
+</tr>
+</table>
+
+<button class="clear-btn" onclick="clearDL()">Clear All DL</button>
+
+</div>
+
+<footer>
+<p>© 2026 CampusPulse Portal</p>
+</footer>
+
+<script>
+
+// LOAD DATA
+window.onload = function(){
+
+// REGISTRATIONS
+let data = JSON.parse(localStorage.getItem("registrations")) || [];
+data.forEach((item,index)=>{
+addRow(item,index);
+});
+
+// DUTY LEAVE
+let dlData = JSON.parse(localStorage.getItem("dutyLeave")) || [];
+dlData.forEach((item,index)=>{
+addDLRow(item,index);
+});
+
+}
+
+// ADD REG ROW
+function addRow(item,index){
+
+let table = document.getElementById("regTable");
+let row = table.insertRow();
+
+row.insertCell(0).innerText = item.name;
+row.insertCell(1).innerText = item.email;
+row.insertCell(2).innerText = item.event;
+
+let btn = document.createElement("button");
+btn.innerText = "Delete";
+btn.className = "delete-btn";
+
+btn.onclick = function(){
+deleteRow(index);
+};
+
+let cell = row.insertCell(3);
+cell.appendChild(btn);
+}
+
+// ADD DL ROW
+function addDLRow(item,index){
+
+let table = document.getElementById("dlTable");
+let row = table.insertRow();
+
+row.insertCell(0).innerText = item.name;
+row.insertCell(1).innerText = item.event;
+row.insertCell(2).innerText = item.date;
+row.insertCell(3).innerText = item.reason;
+
+let btn = document.createElement("button");
+btn.innerText = "Delete";
+btn.className = "delete-btn";
+
+btn.onclick = function(){
+deleteDL(index);
+};
+
+let cell = row.insertCell(4);
+cell.appendChild(btn);
+}
+
+// DELETE REG
+function deleteRow(index){
+
+let data = JSON.parse(localStorage.getItem("registrations")) || [];
+data.splice(index,1);
+
+localStorage.setItem("registrations", JSON.stringify(data));
+location.reload();
+}
+
+// DELETE DL
+function deleteDL(index){
+
+let data = JSON.parse(localStorage.getItem("dutyLeave")) || [];
+data.splice(index,1);
+
+localStorage.setItem("dutyLeave", JSON.stringify(data));
+location.reload();
+}
+
+// CLEAR REG
+function clearAll(){
+if(confirm("Are you sure?")){
+localStorage.removeItem("registrations");
+location.reload();
+}
+}
+
+// CLEAR DL
+function clearDL(){
+if(confirm("Clear all Duty Leave applications?")){
+localStorage.removeItem("dutyLeave");
+location.reload();
+}
+}
+
+</script>
+
+</body>
+</html>

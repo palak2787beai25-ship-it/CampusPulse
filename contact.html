@@ -184,19 +184,21 @@ feel free to contact our support team.
 
 <h3>Send a Message</h3>
 
-<form onsubmit="return validate()">
+<form action="https://formsubmit.co/yourgmail@gmail.com" method="POST">
+
+<input type="hidden" name="_captcha" value="false">
 
 <label>Full Name</label>
-<input type="text" placeholder="Enter your name" >
+<input type="text" name="name" placeholder="Enter your name">
 
 <label>Email Address</label>
-<input type="email" placeholder="Enter your email" >
+<input type="email" name="email" placeholder="Enter your email">
 
 <label>Event Name</label>
-<input type="text" placeholder="Enter Event Name">
+<input type="text" name="event" placeholder="Enter Event Name">
 
 <label>Message</label>
-<textarea rows="5" placeholder="Write your message here..." ></textarea>
+<textarea name="message" rows="5" placeholder="Write your message here..."></textarea>
 
 <button class="submit-btn">Send Message</button>
 

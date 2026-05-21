@@ -249,32 +249,79 @@ function validate(){
 
 <script>
 
-emailjs.init(rk-jLMoQVPhj9WcDB);
+// ✅ Initialize EmailJS
+emailjs.init("rk-jLMoQVPhj9WcDB");
 
 function sendMail(event){
 
 event.preventDefault();
 
+// ✅ GET VALUES
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let eventName = document.getElementById("event").value;
+let message = document.getElementById("message").value;
+
+// ✅ VALIDATION
+if(name === ""){
+    alert("Name is required");
+    return;
+}
+
+if(email === ""){
+    alert("Email is required");
+    return;
+}
+
+if(eventName === ""){
+    alert("Event name is required");
+    return;
+}
+
+if(message === ""){
+    alert("Message is required");
+    return;
+}
+
+// ✅ EMAIL DATA
 let params = {
-    name: document.getElementById("name").value,
-    email: document.getElementById("email").value,
-    event: document.getElementById("event").value,
-    message: document.getElementById("message").value
+    name: name,
+    email: email,
+    event: eventName,
+    message: message
 };
 
-emailjs.send(service_wnlnqmp,template_86gjl1e,params)
+// ✅ SEND EMAIL
+emailjs.send(
+    "service_wnlnqmp",
+    "template_86gjl1e",
+    params
+)
 
 .then(function(response){
+
     alert("Email Sent Successfully!");
+
+    // ✅ CLEAR FORM
+    document.getElementById("name").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("event").value = "";
+    document.getElementById("message").value = "";
+
 })
 
 .catch(function(error){
+
     alert("Failed to send email");
+
+    console.log(error);
+
 });
 
 }
 
 </script>
+
 
 </body>
 </html>

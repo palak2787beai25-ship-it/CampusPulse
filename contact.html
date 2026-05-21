@@ -185,17 +185,22 @@ feel free to contact our support team.
 <h3>Send a Message</h3>
 
 
-<form action="https://formsubmit.co/yourgmail@gmail.com" method="POST">
 
-<input type="hidden" name="_captcha" value="false">
+<form onsubmit="sendMail(event)">
 
-<input type="text" name="name" placeholder="Name">
+<label>Full Name</label>
+<input type="text" id="name" placeholder="Enter your name">
 
-<input type="email" name="email" placeholder="Email">
+<label>Email Address</label>
+<input type="email" id="email" placeholder="Enter your email">
 
-<textarea name="message" placeholder="Message"></textarea>
+<label>Event Name</label>
+<input type="text" id="event" placeholder="Enter Event Name">
 
-<button type="submit">Send</button>
+<label>Message</label>
+<textarea rows="5" id="message" placeholder="Write your message here..."></textarea>
+
+<button class="submit-btn">Send Message</button>
 
 </form>
 
@@ -237,6 +242,37 @@ function validate(){
   }
 
 }
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+
+<script>
+
+emailjs.init(rk-jLMoQVPhj9WcDB);
+
+function sendMail(event){
+
+event.preventDefault();
+
+let params = {
+    name: document.getElementById("name").value,
+    email: document.getElementById("email").value,
+    event: document.getElementById("event").value,
+    message: document.getElementById("message").value
+};
+
+emailjs.send(service_wnlnqmp,template_86gjl1e,params)
+
+.then(function(response){
+    alert("Email Sent Successfully!");
+})
+
+.catch(function(error){
+    alert("Failed to send email");
+});
+
+}
+
 </script>
 
 </body>

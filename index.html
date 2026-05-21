@@ -42,6 +42,17 @@ z-index:100;
 flex-wrap:wrap;
 }
 
+#calendar{
+width:50%;
+max-width:450px;
+margin:20px auto;
+background:white;
+padding:8px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+font-size:12px;
+}
+
 nav a{
 text-decoration:none;
 color:#444;
@@ -263,6 +274,9 @@ padding:25px;
 }
 
 </style>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
 
 </head>
 
@@ -279,8 +293,9 @@ padding:25px;
 <a href="cultural.html">Cultural</a>
 <a href="technical.html">Technical</a>
 <a href="sports.html">Sports</a>
-<a href="contact.html">Contact</a>
 <a href="registrations.html">Registrations</a>
+<a href="contact.html">Contact</a>
+    
 
 
 
@@ -415,6 +430,14 @@ Logout
 
 </div>
 </section>
+<div id="calendar" style="
+max-width:900px;
+margin:40px auto;
+background:white;
+padding:20px;
+border-radius:15px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+"></div>
 
 <section class="announcement">
 <h3>Latest Announcement</h3>
@@ -426,6 +449,7 @@ Logout
 <!-- 🔥 FLOATING BUTTONS -->
 
 <div id="leaveBtn" class="floating-btn" onclick="openPopup('leavePopup')">📝</div>
+
 
 
 
@@ -567,6 +591,47 @@ function logout(){
 localStorage.removeItem("loggedUser");
 window.location = "login.html";
 }
+</script>
+<script>
+
+document.addEventListener('DOMContentLoaded', function() {
+
+var calendarEl = document.getElementById('calendar');
+
+var calendar = new FullCalendar.Calendar(calendarEl, {
+
+initialView: 'dayGridMonth',
+
+events: [
+
+{
+title: 'AI Seminar',
+start: '2026-03-12'
+},
+
+{
+title: 'Hackathon 2026',
+start: '2026-03-25'
+},
+
+{
+title: 'Dance Competition',
+start: '2026-04-05'
+},
+
+{
+title: 'Football Tournament',
+start: '2026-04-20'
+}
+
+]
+
+});
+
+calendar.render();
+
+});
+
 </script>
 
 </body>

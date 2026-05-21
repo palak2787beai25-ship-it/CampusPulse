@@ -2,150 +2,153 @@
 <html>
 <head>
     <title>CampusPulse Login</title>
+<style>
+    *{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Poppins',sans-serif;
+}
 
-    <style>
-        *{
-            margin:0;
-            padding:0;
-            box-sizing:border-box;
-            font-family:'Poppins',sans-serif;
-        }
+body{
+background:linear-gradient(120deg,#f0f4ff,#e6f0ff);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
 
-        body{
-            height:100vh;
-            display:flex;
-            justify-content:center;
-            align-items:center;
-            background:linear-gradient(120deg,#6a11cb,#2575fc);
-        }
+/* LOGIN BOX */
 
-        .login-container{
-            background:white;
-            padding:40px 35px;
-            border-radius:15px;
-            width:320px;
-            text-align:center;
-            box-shadow:0 15px 40px rgba(0,0,0,0.2);
-            animation:fadeIn 0.8s ease;
-        }
+.login-box{
+background:white;
+width:380px;
+padding:40px;
+border-radius:20px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+text-align:center;
+}
 
-        @keyframes fadeIn{
-            from{opacity:0; transform:translateY(20px);}
-            to{opacity:1; transform:translateY(0);}
-        }
+/* HEADING */
 
-        .login-container h2{
-            margin-bottom:20px;
-            color:#6a11cb;
-        }
+.login-box h2{
+font-size:38px;
+margin-bottom:30px;
+color:#222;
+}
 
-        .login-container p{
-            font-size:14px;
-            color:#777;
-            margin-bottom:25px;
-        }
+/* INPUTS */
 
-        .input-box{
-            position:relative;
-            margin-bottom:20px;
-        }
+.login-box input{
+width:100%;
+padding:14px;
+margin:12px 0;
+border:1px solid #ccc;
+border-radius:12px;
+font-size:16px;
+outline:none;
+transition:0.3s;
+}
 
-        .input-box input{
-            width:100%;
-            padding:10px;
-            border:1px solid #ccc;
-            border-radius:8px;
-            outline:none;
-            transition:0.3s;
-        }
+.login-box input:focus{
+border-color:#6a11cb;
+box-shadow:0 0 8px rgba(106,17,203,0.2);
+}
 
-        .input-box input:focus{
-            border-color:#6a11cb;
-            box-shadow:0 0 8px rgba(106,17,203,0.3);
-        }
+/* BUTTON */
 
-        button{
-            width:100%;
-            padding:10px;
-            border:none;
-            border-radius:25px;
-            background:linear-gradient(90deg,#6a11cb,#2575fc);
-            color:white;
-            font-weight:bold;
-            cursor:pointer;
-            transition:0.3s;
-        }
+.login-box button{
+width:100%;
+padding:14px;
+margin-top:20px;
+border:none;
+border-radius:30px;
+background:linear-gradient(90deg,#6a11cb,#2575fc);
+color:white;
+font-size:18px;
+font-weight:bold;
+cursor:pointer;
+transition:0.3s;
+}
 
-        button:hover{
-            transform:scale(1.05);
-            box-shadow:0 8px 20px rgba(0,0,0,0.2);
-        }
+.login-box button:hover{
+transform:scale(1.03);
+box-shadow:0 6px 20px rgba(0,0,0,0.2);
+}
 
-        .footer-text{
-            margin-top:15px;
-            font-size:12px;
-            color:#888;
-        }
+/* LINK */
 
-    </style>
+.login-box p{
+margin-top:20px;
+font-size:15px;
+}
+
+.login-box a{
+color:#6a11cb;
+text-decoration:none;
+font-weight:bold;
+}
+</style>
 </head>
 
 <body>
 
-<div class="login-container">
 
-    <h2>CampusPulse</h2>
-    <p>Smart Campus Portal Login</p>
+<div class="login-box">
 
-    <div class="input-box">
-        <input type="text" id="username" placeholder="Email">
-    </div>
+<h2>Login</h2>
 
-    <div class="input-box">
-        <input type="password" id="password" placeholder="Password">
-    </div>
+<form onsubmit="login(event)">
 
-    <button onclick="login()">Login</button>
+<input type="email" id="email" placeholder="Enter Email">
 
-    <p class="footer-text">© 2026 CampusPulse</p>
+<input type="password" id="password" placeholder="Enter Password">
+
+<button type="submit">Login</button>
+
+</form>
+
+<p>
+Don't have an account?
+<a href="signup.html">Signup</a>
+</p>
 
 </div>
 
 <script>
-function login() {
-    let email = document.getElementById("username").value;
-    let pass = document.getElementById("password").value;
 
-    let storedUser = JSON.parse(localStorage.getItem("user"));
+function login(event){
 
-    if(storedUser == null){
-        alert("No user found! Please sign up first.");
-        return;
-    }
+event.preventDefault();
 
-    if(email === storedUser.email && pass === storedUser.password){
-        alert("Login successful!");
-        window.location.href = "index.html";
-    } else {
-        alert("Invalid email or password");
-    }
-}
-function login(){
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
 
-let username = document.getElementById("username").value;
-
-if(username === ""){
-    alert("Enter username");
+if(email === "" || password === ""){
+    alert("Fill all fields");
     return;
 }
 
-/* SAVE USER */
-localStorage.setItem("loggedUser", username);
+let users = JSON.parse(localStorage.getItem("users")) || [];
 
-/* REDIRECT */
-window.location = "index.html";
+let validUser = users.find(user =>
+    user.email === email &&
+    user.password === password
+);
+
+if(validUser){
+
+    alert("Login Successful!");
+
+    window.location.href = "index.html";
+
 }
-</script>
+else{
+    alert("Invalid Email or Password");
+}
 
+}
+
+</script>
 </body>
 </html>

@@ -99,33 +99,50 @@
             Already have an account? <a href="login.html">Login</a>
         </div>
     </div>
-
     <script>
-function signup(event) {
-    event.preventDefault();
 
-    let name = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let pass = document.getElementById("password").value;
-    let confirm = document.getElementById("confirm").value;
+function signup(event){
 
-    if(pass !== confirm){
-        alert("Passwords do not match!");
-        return;
-    }
+event.preventDefault();
 
-    let user = {
-        name: name,
-        email: email,
-        password: pass
-    };
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let password = document.getElementById("password").value;
 
-    localStorage.setItem("user", JSON.stringify(user));
-
-    alert("Signup successful!");
-    window.location.href = "login.html";
+if(name === "" || email === "" || password === ""){
+    alert("Fill all fields");
+    return;
 }
+
+// GET OLD USERS
+let users = JSON.parse(localStorage.getItem("users")) || [];
+
+// CHECK IF EMAIL ALREADY EXISTS
+let exists = users.find(user => user.email === email);
+
+if(exists){
+    alert("Email already registered");
+    return;
+}
+
+// SAVE NEW USER
+users.push({
+    name: name,
+    email: email,
+    password: password
+});
+
+localStorage.setItem("users", JSON.stringify(users));
+
+alert("Signup Successful!");
+
+window.location.href = "login.html";
+
+}
+
 </script>
+
+   
 
 </body>
 </html>

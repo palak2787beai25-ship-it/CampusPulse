@@ -65,7 +65,7 @@ color:#6a11cb;
 transform:scale(1.1);
 }
 
-/* 🔥 SEARCH BAR */
+/* SEARCH BAR */
 
 .search-box{
 text-align:center;
@@ -358,7 +358,7 @@ Logout
 </div>
 </nav>
 
-<!-- 🔥 SEARCH BAR -->
+<!-- SEARCH BAR -->
 <div class="search-box">
 <input type="text" id="searchInput" placeholder="Search events...">
 
@@ -448,8 +448,7 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 
 </div>
 
-<!-- 🔥 FLOATING BUTTONS -->
-
+<!-- FLOATING BUTTONS -->
 <div id="leaveBtn" class="floating-btn" onclick="openPopup('leavePopup')">📝</div>
 
 
@@ -494,13 +493,13 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 
 <script>
 
-/* 🔥 SEARCH FUNCTION */
+/* SEARCH FUNCTION */
 
 function searchFilter(){
 let input = document.getElementById("searchInput").value.toLowerCase();
 let filter = document.getElementById("filter").value;
 
-/* 🔥 REDIRECT WITH SEARCH DATA */
+/* REDIRECT WITH SEARCH DATA */
 
 if(filter === "academic"){
     window.location = "academics.html?search=" + input;
@@ -540,7 +539,7 @@ if(name=="" || event=="" || date=="" || reason==""){
     return;
 }
 
-/* 🔥 STORE DATA */
+/* STORE DATA */
 let data = JSON.parse(localStorage.getItem("dutyLeave")) || [];
 
 data.push({
@@ -563,19 +562,7 @@ document.getElementById("dlReason").value="";
 /* CLOSE POPUP */
 closePopup("leavePopup");
 }
-window.onload = function(){
 
-let user = localStorage.getItem("loggedUser");
-
-/* AGAR LOGIN NA HO */
-if(!user){
-    window.location = "login.html";
-}
-
-/* SHOW USER */
-document.getElementById("usernameDisplay").innerText = user;
-document.getElementById("userText").innerText = "Hello, " + user;
-}
 
 // TOGGLE DROPDOWN
 function toggleMenu(){

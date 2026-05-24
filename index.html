@@ -577,8 +577,15 @@ if(menu.style.display === "block"){
 
 // LOGOUT
 function logout(){
-localStorage.removeItem("loggedUser");
-window.location = "login.html";
+
+localStorage.removeItem(
+"loggedUser"
+);
+
+window.location.replace(
+"login.html"
+);
+
 }
 </script>
 <script>
@@ -662,6 +669,50 @@ calendar.render();
 });
 
 </script>
+<script>
 
+if(
+sessionStorage.getItem(
+"isLoggedIn"
+)!=="true"
+){
+
+window.location.replace(
+"login.html"
+);
+
+}
+
+</script>
+<script>
+
+let user =
+JSON.parse(
+localStorage.getItem(
+"loggedUser"
+));
+if(!user){
+
+window.location.replace(
+"login.html"
+);
+
+}else{
+
+document.getElementById(
+"usernameDisplay"
+).innerText =
+user.name || user.email;
+
+document.getElementById(
+"userText"
+).innerText =
+"Hello, " +
+(user.name || user.email);
+
+}
+
+
+</script>
 </body>
-</html>
+</html> 

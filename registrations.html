@@ -16,7 +16,7 @@ body{
 background:linear-gradient(120deg,#f0f4ff,#e6f0ff);
 }
 
-/* HEADER */
+
 
 header{
 background:linear-gradient(90deg,#6a11cb,#2575fc);
@@ -25,7 +25,7 @@ padding:25px;
 text-align:center;
 }
 
-/* NAV */
+
 
 nav{
 display:flex;
@@ -46,7 +46,7 @@ nav a:hover{
 color:#6a11cb;
 }
 
-/* CONTAINER */
+
 
 .container{
 max-width:1000px;
@@ -54,7 +54,7 @@ margin:auto;
 padding:40px 20px;
 }
 
-/* TITLE */
+
 
 h2{
 text-align:center;
@@ -62,7 +62,7 @@ margin-bottom:30px;
 color:#6a11cb;
 }
 
-/* TABLE */
+
 
 table{
 width:100%;
@@ -85,7 +85,7 @@ background:#6a11cb;
 color:white;
 }
 
-/* BUTTONS */
+
 
 .delete-btn{
 background:red;
@@ -109,7 +109,7 @@ border-radius:20px;
 cursor:pointer;
 }
 
-/* FOOTER */
+
 
 footer{
 margin-top:40px;
@@ -137,7 +137,7 @@ padding:20px;
 
 <a href="registrations.html">Registrations</a>
 <a href="contact.html">Contact</a>
-<a href="logout.html">Logout</a> <!-- ✅ ONLY ADDITION -->
+<a href="logout.html">Logout</a> 
 </nav>
 
 <div class="container">
@@ -155,7 +155,7 @@ padding:20px;
 
 <button class="clear-btn" onclick="clearAll()">Clear All Registrations</button>
 
-<!-- 🔥 NEW DUTY LEAVE SECTION -->
+
 
 <h2>Duty Leave Applications</h2>
 
@@ -179,16 +179,15 @@ padding:20px;
 
 <script>
 
-// LOAD DATA
+
 window.onload = function(){
 
-// REGISTRATIONS
+
 let data = JSON.parse(localStorage.getItem("registrations")) || [];
 data.forEach((item,index)=>{
 addRow(item,index);
 });
 
-// DUTY LEAVE
 let dlData = JSON.parse(localStorage.getItem("dutyLeave")) || [];
 dlData.forEach((item,index)=>{
 addDLRow(item,index);
@@ -196,7 +195,7 @@ addDLRow(item,index);
 
 }
 
-// ADD REG ROW
+
 function addRow(item,index){
 
 let table = document.getElementById("regTable");
@@ -218,7 +217,7 @@ let cell = row.insertCell(3);
 cell.appendChild(btn);
 }
 
-// ADD DL ROW
+
 function addDLRow(item,index){
 
 let table = document.getElementById("dlTable");
@@ -241,7 +240,7 @@ let cell = row.insertCell(4);
 cell.appendChild(btn);
 }
 
-// DELETE REG
+
 function deleteRow(index){
 
 let data = JSON.parse(localStorage.getItem("registrations")) || [];
@@ -251,7 +250,7 @@ localStorage.setItem("registrations", JSON.stringify(data));
 location.reload();
 }
 
-// DELETE DL
+
 function deleteDL(index){
 
 let data = JSON.parse(localStorage.getItem("dutyLeave")) || [];
@@ -261,7 +260,7 @@ localStorage.setItem("dutyLeave", JSON.stringify(data));
 location.reload();
 }
 
-// CLEAR REG
+
 function clearAll(){
 if(confirm("Are you sure?")){
 localStorage.removeItem("registrations");
@@ -269,7 +268,7 @@ location.reload();
 }
 }
 
-// CLEAR DL
+
 function clearDL(){
 if(confirm("Clear all Duty Leave applications?")){
 localStorage.removeItem("dutyLeave");

@@ -255,7 +255,14 @@ background:#6a11cb;
 color:white;
 border:none;
 border-radius:5px;
+cursor:pointer;
 }
+
+.close-btn{
+background:#ff4d4d !important;
+margin-top:8px;
+}
+
 #leavePopup select{
 width:100%;
 padding:10px;
@@ -263,6 +270,7 @@ margin:8px 0;
 border-radius:8px;
 border:1px solid #ccc;
 }
+
 /* FOOTER */
 
 footer{
@@ -274,6 +282,7 @@ padding:25px;
 }
 
 </style>
+
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
 
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
@@ -296,10 +305,6 @@ padding:25px;
 
 <a href="registrations.html">Registrations</a>
 <a href="contact.html">Contact</a>
-
-
-
-
 
 <div id="profileBox" style="
 margin-left:auto;
@@ -432,6 +437,7 @@ Logout
 
 </div>
 </section>
+
 <div id="calendar" style="
 max-width:900px;
 margin:40px auto;
@@ -451,14 +457,13 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 <!-- FLOATING BUTTONS -->
 <div id="leaveBtn" class="floating-btn" onclick="openPopup('leavePopup')">📝</div>
 
-
-
-
 <!-- DUTY LEAVE POPUP -->
 <div id="leavePopup" class="popup">
+
 <h3>Duty Leave</h3>
 
 <input type="text" id="dlName" placeholder="Name">
+
 <select id="dlEvent">
 <option value="">Select Event</option>
 
@@ -481,10 +486,15 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 <option value="Basketball League">Basketball League</option>
 
 </select>
+
 <input type="date" id="dlDate">
+
 <textarea id="dlReason" placeholder="Slot(Full day/Period Wise)"></textarea>
 
 <button onclick="applyDL()">Apply</button>
+
+<button class="close-btn" onclick="closePopup('leavePopup')">Close</button>
+
 </div>
 
 <footer>
@@ -496,26 +506,28 @@ box-shadow:0 10px 20px rgba(0,0,0,0.1);
 /* SEARCH FUNCTION */
 
 function searchFilter(){
+
 let input = document.getElementById("searchInput").value.toLowerCase();
 let filter = document.getElementById("filter").value;
 
 /* REDIRECT WITH SEARCH DATA */
 
 if(filter === "academic"){
-    window.location = "academics.html?search=" + input;
+window.location = "academics.html?search=" + input;
 }
 else if(filter === "technical"){
-    window.location = "technical.html?search=" + input;
+window.location = "technical.html?search=" + input;
 }
 else if(filter === "cultural"){
-    window.location = "cultural.html?search=" + input;
+window.location = "cultural.html?search=" + input;
 }
 else if(filter === "sports"){
-    window.location = "sports.html?search=" + input;
+window.location = "sports.html?search=" + input;
 }
 else{
-    alert("Please select a category to search");
+alert("Please select a category to search");
 }
+
 }
 
 /* POPUPS */
@@ -527,6 +539,7 @@ document.getElementById(id).style.display="block";
 function closePopup(id){
 document.getElementById(id).style.display="none";
 }
+
 function applyDL(){
 
 let name = document.getElementById("dlName").value;
@@ -535,18 +548,18 @@ let date = document.getElementById("dlDate").value;
 let reason = document.getElementById("dlReason").value;
 
 if(name=="" || event=="" || date=="" || reason==""){
-    alert("Fill all fields!");
-    return;
+alert("Fill all fields!");
+return;
 }
 
 /* STORE DATA */
 let data = JSON.parse(localStorage.getItem("dutyLeave")) || [];
 
 data.push({
-    name:name,
-    event:event,
-    date:date,
-    reason:reason
+name:name,
+event:event,
+date:date,
+reason:reason
 });
 
 localStorage.setItem("dutyLeave", JSON.stringify(data));
@@ -561,18 +574,20 @@ document.getElementById("dlReason").value="";
 
 /* CLOSE POPUP */
 closePopup("leavePopup");
-}
 
+}
 
 // TOGGLE DROPDOWN
 function toggleMenu(){
+
 let menu = document.getElementById("profileMenu");
 
 if(menu.style.display === "block"){
-    menu.style.display = "none";
+menu.style.display = "none";
 }else{
-    menu.style.display = "block";
+menu.style.display = "block";
 }
+
 }
 
 // LOGOUT
@@ -587,7 +602,9 @@ window.location.replace(
 );
 
 }
+
 </script>
+
 <script>
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -669,6 +686,7 @@ calendar.render();
 });
 
 </script>
+
 <script>
 
 if(
@@ -684,6 +702,7 @@ window.location.replace(
 }
 
 </script>
+
 <script>
 
 let user =
@@ -691,6 +710,7 @@ JSON.parse(
 localStorage.getItem(
 "loggedUser"
 ));
+
 if(!user){
 
 window.location.replace(
@@ -712,7 +732,7 @@ document.getElementById(
 
 }
 
-
 </script>
+
 </body>
-</html> 
+</html>

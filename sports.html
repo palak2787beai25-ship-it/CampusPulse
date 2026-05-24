@@ -17,7 +17,7 @@ background:linear-gradient(120deg,#f0f4ff,#e6f0ff);
 color:#333;
 }
 
-/* HEADER */
+
 
 header{
 background:linear-gradient(90deg,#6a11cb,#2575fc);
@@ -27,7 +27,7 @@ text-align:center;
 box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* NAVIGATION */
+
 
 nav{
 display:flex;
@@ -53,7 +53,7 @@ color:#1e3a8a;
 transform:scale(1.1);
 }
 
-/* CONTAINER */
+
 
 .container{
 max-width:1000px;
@@ -61,7 +61,7 @@ margin:auto;
 padding:40px 20px;
 }
 
-/* PAGE TITLE */
+
 
 .page-title{
 text-align:center;
@@ -70,7 +70,7 @@ color:#6a11cb;
 font-size:28px;
 }
 
-/* EVENT CARDS */
+
 
 .event-card{
 background:white;
@@ -108,7 +108,7 @@ margin-bottom:10px;
 margin:6px 0;
 }
 
-/* REGISTER BUTTON */
+
 
 button[onclick="openForm()"]{
 display:block;
@@ -129,7 +129,7 @@ transform:scale(1.05);
 box-shadow:0 6px 20px rgba(0,0,0,0.2);
 }
 
-/* FORM */
+
 
 #formBox{
 margin-top:20px;
@@ -168,14 +168,13 @@ transition:0.3s;
 transform:scale(1.03);
 }
 
-/* CANCEL BUTTON */
+
 
 #formBox button:last-child{
 background:#ccc;
 color:black;
 }
 
-/* FOOTER */
 
 footer{
 margin-top:40px;
@@ -204,7 +203,7 @@ padding:20px;
 
 <a href="registrations.html">Registrations</a>
 <a href="contact.html">Contact</a>
-<a href="logout.html">Logout</a> <!-- ✅ ONLY ADDITION -->
+<a href="logout.html">Logout</a> 
 </nav>
 
 <div class="container">
@@ -286,7 +285,6 @@ function searchEvents(){
         card.style.display = text.includes(input) ? "block" : "none";
     });
 }
-// 🔥 READ SEARCH FROM URL
 window.onload = function(){
 let params = new URLSearchParams(window.location.search);
 let search = params.get("search");

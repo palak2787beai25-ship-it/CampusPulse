@@ -138,9 +138,25 @@ let validUser = users.find(user =>
 
 if(validUser){
 
-    alert("Login Successful!");
+localStorage.setItem(
+"loggedUser",
+JSON.stringify(validUser)
+);
 
-    window.location.href = "index.html";
+sessionStorage.setItem(
+"isLoggedIn",
+"true"
+);
+
+sessionStorage.setItem(
+"isLoggedIn",
+"true"
+);
+
+alert("Login Successful!");
+
+window.location.href=
+"index.html";
 
 }
 else{

@@ -114,10 +114,10 @@ if(name === "" || email === "" || password === ""){
     return;
 }
 
-// GET OLD USERS
+
 let users = JSON.parse(localStorage.getItem("users")) || [];
 
-// CHECK IF EMAIL ALREADY EXISTS
+
 let exists = users.find(user => user.email === email);
 
 if(exists){
@@ -125,7 +125,7 @@ if(exists){
     return;
 }
 
-// SAVE NEW USER
+
 users.push({
     name: name,
     email: email,

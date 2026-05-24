@@ -16,7 +16,7 @@ background:linear-gradient(120deg,#f0f4ff,#e6f0ff);
 color:#333;
 }
 
-/* HEADER */
+
 
 header{
 background:linear-gradient(90deg,#6a11cb,#2575fc);
@@ -26,7 +26,7 @@ text-align:center;
 box-shadow:0 4px 12px rgba(0,0,0,0.2);
 }
 
-/* NAV */
+
 
 nav{
 display:flex;
@@ -52,7 +52,6 @@ color:#6a11cb;
 transform:scale(1.1);
 }
 
-/* CONTAINER */
 
 .container{
 max-width:1000px;
@@ -60,7 +59,7 @@ margin:auto;
 padding:40px 20px;
 }
 
-/* PAGE TITLE */
+
 
 .page-title{
 text-align:center;
@@ -69,7 +68,7 @@ color:#6a11cb;
 font-size:28px;
 }
 
-/* CONTACT CARD */
+
 
 .contact-card{
 background:white;
@@ -94,7 +93,7 @@ margin-bottom:10px;
 margin:6px 0;
 }
 
-/* FORM */
+
 
 label{
 display:block;
@@ -129,7 +128,7 @@ cursor:pointer;
 background:#6a11cb;
 }
 
-/* FOOTER */
+
 
 footer{
 margin-top:40px;
@@ -158,7 +157,7 @@ padding:20px;
 
 <a href="registrations.html">Registrations</a>
 <a href="contact.html">Contact</a>
-<a href="logout.html">Logout</a> <!-- ✅ ONLY ADDITION -->
+<a href="logout.html">Logout</a> 
 </nav>
 
 <div class="container">
@@ -249,14 +248,13 @@ function validate(){
 
 <script>
 
-// ✅ Initialize EmailJS
 emailjs.init("rk-jLMoQVPhj9WcDB");
 
 function sendMail(event){
 
 event.preventDefault();
 
-// ✅ GET VALUES
+
 let name = document.getElementById("name").value;
 let email = document.getElementById("email").value;
 let eventName = document.getElementById("event").value;
@@ -283,7 +281,7 @@ if(message === ""){
     return;
 }
 
-// ✅ EMAIL DATA
+
 let params = {
     name: name,
     email: email,
@@ -291,7 +289,7 @@ let params = {
     message: message
 };
 
-// ✅ SEND EMAIL
+
 emailjs.send(
     "service_wnlnqmp",
     "template_86gjl1e",
